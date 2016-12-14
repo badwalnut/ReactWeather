@@ -14,8 +14,10 @@ var React = require('react');
 var About = (props) => {
   return (
     <div>
-      <h3>About</h3>
-      <p>This is the About page!</p>
+      <h1 className="text-center">About</h1>
+      <p>React Weather</p>
+      <p>An app created as a tool for learning React.js</p>
+      <p>Gets current temperature for queried city</p>
     </div>
   )
 };
