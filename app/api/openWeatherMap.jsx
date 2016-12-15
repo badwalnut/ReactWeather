@@ -9,16 +9,29 @@ module.exports = {
   getTemp: function (location) {
     var encodedLocation = encodeURIComponent(location);
     var requestUrl = `${OPEN_WEATHER_MAP_URL}&q=${encodedLocation}`;
+    console.log(requestUrl);
 
-    return axios.get(requestUrl).then(function (res) {
-//      debugger;
-      if (res.data.cod && res.data.message) {   // handle edge case errors from OpenWeather
-        throw new Error(res.data.message);
-      } else {
-        return res.data.main.temp;
-      }
-    }, function (res) {
-      throw new Error(res.data.message);
-    });
+      // return axios.get(requestUrl).then(function (res) {
+      // if (res.data.cod && res.data.message) {   // handle edge case errors from OpenWeather
+      //   throw new Error(res.data.message);
+      // } else {
+      //   return res.data.main.temp;
+      // }
+      // }, function (res) {
+      // throw new Error(res.data.message);
+      // });
+      return axios.get(requestUrl).then(function (res) {
+        console.log(res);
+        // if (res.data.cod && res.data.message) {   // handle edge case errors from OpenWeather
+        //   throw new Error(res.data.message);      // this doesn't work
+        // } else {
+          return res.data.main.temp;
+        // }
+      })
+      .catch(function (error) {
+        alert("Hey!  " + error);
+        // console.log("Hey!" + error);
+        // console.log(res.data.message);
+      });
+    }
   }
-}
